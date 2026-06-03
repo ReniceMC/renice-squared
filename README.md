@@ -7,7 +7,7 @@ A lightweight edit of Renice Cubed that removes advantage-giving features while 
 <br clear="left"/>
 
 [![MOD LIST](https://img.shields.io/badge/%E2%98%B0_MOD_LIST-222222?style=for-the-badge&labelColor=000000)](MOD-LIST.md)
-[![CHANGELOG](https://img.shields.io/badge/✦_CHANGELOG-222222?style=for-the-badge&labelColor=000000)](https://github.com/wechirok/)
+[![CHANGELOG](https://img.shields.io/badge/✦_CHANGELOG-222222?style=for-the-badge&labelColor=000000)](https://github.com/ReniceMC/renice-squared/blob/main/CHANGELOG.md)
 
 ---
 
