@@ -1,0 +1,52 @@
+name: Bug Report
+description: Report a problem with Renice²
+title: "[Bug]: "
+labels: ["bug", "triage"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem with Renice².
+
+        Check if [the issue already exists](https://github.com/ReniceMC/renice-squared/issues) before opening a new one.
+
+  - type: input
+    id: modpack-version
+    attributes:
+      label: Modpack version
+      description: "Example: 1.0-alpha"
+      placeholder: "1.0-alpha"
+    validations:
+      required: true
+
+  - type: input
+    id: minecraft-version
+    attributes:
+      label: Minecraft version
+      description: "Example: 26.1.2"
+      placeholder: "26.1.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: launcher
+    attributes:
+      label: Launcher
+      description: Which launcher are you using?
+      options:
+        - Prism Launcher
+        - Modrinth App
+        - CurseForge App
+        - Other launcher
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem description
+      description: "Describe what happened. Click **Copy a message for support** button in Crash Assistant and paste the copied message here. If this is not a crash, attach your log file or provide a link to it using [Pastebin](https://pastebin.com/), [mclo.gs](https://mclo.gs/), or [GitHub Gist](https://gist.github.com/)."
+      placeholder: "The game crashes when..."
+    validations:
+      required: true
