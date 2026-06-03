@@ -1,0 +1,38 @@
+{
+  "main_menu": {
+    "top_left": [],
+    "top_right": [],
+    "bottom_left": [
+      {
+        "text": "Based on Renice³",
+        "color": "white",
+        "underlined": false,
+        "click_event": {
+          "action": "open_url",
+          "url": "https://renice-cubed.gitbook.io/wiki"
+        },
+        "hover_event": {
+          "action": "show_text",
+          "value": {
+            "text": "Open the Renice³ wiki",
+            "color": "white"
+          }
+        }
+      },
+      {
+        "text": "Renice² 1.0.0 Alpha",
+        "color": "white",
+        "underlined": false
+      }
+    ],
+    "bottom_right": [],
+    "mod_blacklist": []
+  },
+  "pause_menu": {
+    "top_left": [],
+    "top_right": [],
+    "bottom_left": [],
+    "bottom_right": [],
+    "mod_blacklist": []
+  }
+}

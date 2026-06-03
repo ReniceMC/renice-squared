@@ -1,0 +1,13 @@
+name = "Clumps"
+filename = "Clumps-fabric-26.1.2-26.1.2.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/Wnxd13zP/versions/RXNrUIjA/Clumps-fabric-26.1.2-26.1.2.1.jar"
+hash-format = "sha512"
+hash = "369c20d8887c36c9fd4569a7c8dac1ffc51be036bb58763605535034a5aebd9fbb35de43cc0cc8c774d8dd02b2ab1776f90be1657f3796b38107f779edb4a77a"
+
+[update]
+[update.modrinth]
+mod-id = "Wnxd13zP"
+version = "RXNrUIjA"

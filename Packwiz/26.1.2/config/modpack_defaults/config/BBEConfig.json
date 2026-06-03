@@ -1,0 +1,8 @@
+{
+  "bbe.config.storage.main": [
+    {
+      "option": "optimize.banner",
+      "value": false
+    }
+  ]
+}

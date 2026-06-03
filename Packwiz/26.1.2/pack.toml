@@ -1,0 +1,13 @@
+name = "Renice Squared"
+author = "Wechirok"
+version = "1.0.0-alpha"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "0a0a38d671b79b3d87f83fd002cea3807ceaf76b0d8f3022169f3d85a471fdb8"
+
+[versions]
+fabric = "0.19.2"
+minecraft = "26.1.2"
