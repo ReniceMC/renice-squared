@@ -15,8 +15,8 @@ body:
     id: modpack-version
     attributes:
       label: Modpack version
-      description: "Example: 1.0-alpha"
-      placeholder: "1.0-alpha"
+      description: "Example: 1.0.0-alpha"
+      placeholder: "1.0.0-alpha"
     validations:
       required: true
 
