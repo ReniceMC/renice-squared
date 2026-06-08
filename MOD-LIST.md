@@ -13,9 +13,10 @@
     <td><br>&nbsp;</td>
     <td align="center"><strong>26.1.2</strong><br>&nbsp;</td>
   </tr>
+  <tr><td><a href="https://modrinth.com/mod/animatica">Animatica</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/FoundationGames">FoundationGames</a><br>&nbsp;</td><td align="center">❌<br>&nbsp;</td></tr>
   <tr><td><a href="https://modrinth.com/mod/EsAfCjCV">AppleSkin</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/squeek502">squeek502</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
   <tr><td><a href="https://modrinth.com/mod/kqJFAPU9">Better Mount HUD</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/Lortseam">Lortseam</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
-  <tr><td><a href="https://modrinth.com/mod/crash-assistant">Crash Assistant</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/KostromDan">KostromDan</a><br>&nbsp;</td><td align="center">Coming soon<br>&nbsp;</td></tr>
+  <tr><td><a href="https://modrinth.com/mod/crash-assistant">Crash Assistant</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/KostromDan">KostromDan</a><br>&nbsp;</td><td align="center">❌<br>&nbsp;</td></tr>
   <tr><td><a href="https://modrinth.com/mod/jlNms3Jp">Config Manager</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/TheBossMagnus">TheBossMagnus</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
   <tr><td><a href="https://modrinth.com/mod/ETlrkaYF">Cubes Without Borders</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/Kira-NT">Kira-NT</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
   <tr><td><a href="https://modrinth.com/mod/qANg5Jrr">e4mc</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/vgskye">vgskye</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
