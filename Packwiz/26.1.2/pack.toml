@@ -1,13 +1,13 @@
 name = "Renice Squared"
 author = "Wechirok"
-version = "1.0.0-alpha"
+version = "1.1.0-beta"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "0a0a38d671b79b3d87f83fd002cea3807ceaf76b0d8f3022169f3d85a471fdb8"
+hash = "2cf90cd7208f9547ede3fe8d7c08e646c5ba4167f8cdac75c6cf1e8b03eb3221"
 
 [versions]
-fabric = "0.19.2"
+fabric = "0.19.3"
 minecraft = "26.1.2"
