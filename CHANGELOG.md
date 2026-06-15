@@ -10,7 +10,7 @@
 
 ## *Alpha -> Beta*
 
-* Fabric Loader has been updated to `0.19.3`.
+* Fabric Loader has been updated to 0.19.3.
 
 ### Added
 
