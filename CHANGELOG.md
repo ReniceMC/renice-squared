@@ -4,6 +4,34 @@
 
 ## 26.1.2
 
+### 1.1.1-beta
+
+2026-07-04
+
+### Updated
+
+**MODS**
+
+* 3D Skin Layers
+* AppleSkin
+* Collective
+* Config Manager
+* Crash Assistant
+* Cubes Without Borders
+* e4mc
+* Entity Culling
+* Fabric API
+* ImmediatelyFast
+* Ixeris
+* LambDynamicLights
+* Language Reload
+* Lithium
+* ModernFix-mVUS
+* Reese's Sodium Options
+* Remove Reloading Screen
+* YetAnotherConfigLib
+* Zoomify
+
 ### 1.1.0-beta
 
 2026-06-15
