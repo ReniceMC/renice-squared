@@ -1,5 +1,71 @@
 # Renice² changelog
 
+# (2.x.x)
+
+## 26.2
+
+### 2.0.0-alpha
+
+2026-07-27
+
+* Renice Squared has been updated from mc 26.1.2 to 26.2!
+
+### Updated
+
+**MODS**
+
+* 3D Skin Layers
+* Animatica Refabricated
+* AppleSkin
+* BadOptimizations
+* Better Block Entities
+* Better Mount HUD
+* Better Statistics Screen
+* Cloth Config API
+* Clumps
+* Collective
+* Continuity
+* Crash Assistant
+* Cubes Without Borders
+* Debugify
+* Dynamic FPS
+* Entity Culling
+* Entity Model Features
+* Entity Texture Features
+* Fabric API
+* Forge Config API Port
+* Full Brightness Toggle
+* Fzzy Config
+* ImmediatelyFast
+* InventoryHUD+
+* Iris Shaders
+* Ixeris
+* LambDynamicLights
+* Language Reload
+* Lithium
+* Main Menu Credits
+* Mod Menu
+* More Culling
+* No Chat Reports
+* OptiGUI
+* Paginated Advancements
+* Puzzle
+* Reese's Sodium Options
+* Remove Reloading Screen
+* Sodium
+* Sodium Extra
+* Status Effect Bars
+* TCDCommons API
+* Text Placeholder API
+* YetAnotherConfigLib
+* Zoomify
+
+### Removed
+
+**MODS**
+
+* Fabrishot
+
 # (1.x.x)
 
 ## 26.1.2
