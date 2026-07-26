@@ -4,6 +4,31 @@
 
 ## 26.1.2
 
+### 1.1.2
+
+2026-07-26
+
+## *Beta -> Release*
+
+* Renice Squared has moved from beta to its first stable release!
+
+### Updated
+
+**MODS**
+
+* Animatica Refabricated
+* Better Block Entities
+* Crash Assistant
+* Fabric API
+* Fabric Language Kotlin
+* Iris Shaders
+* Ixeris
+* Mod Menu
+* Reese's Sodium Options
+* Sodium
+* Sodium Extra
+* YetAnotherConfigLib
+
 ### 1.1.1-beta
 
 2026-07-04
