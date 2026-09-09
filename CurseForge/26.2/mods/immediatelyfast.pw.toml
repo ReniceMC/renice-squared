@@ -1,0 +1,13 @@
+name = "ImmediatelyFast"
+filename = "ImmediatelyFast-Fabric-1.16.4+26.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "ad000a89ef86575019087a2068eb4eebad02c05e"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8749433
+project-id = 686911

@@ -1,0 +1,13 @@
+name = "TCDCommons API"
+filename = "tcdcommons-5.5.6+fn-26.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "30b8d4d76710e602732a340a7888835566ee6d96"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8617322
+project-id = 711539

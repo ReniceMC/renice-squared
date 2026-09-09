@@ -1,8 +1,13 @@
 *.exe
 *.jar
+__pycache__/
 
 mods/
 **/mods/
+!Packwiz/**/mods/
+!Packwiz/**/mods/*.pw.toml
+!CurseForge/**/mods/
+!CurseForge/**/mods/*.pw.toml
 **/overrides/mods/
 
 resourcepacks/

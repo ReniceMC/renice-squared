@@ -1,0 +1,13 @@
+name = "Debugify"
+filename = "debugify-26.2.0.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "a1b34d3b6f069569df9ad99b1e40eb765f0baa06"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8300989
+project-id = 596224
