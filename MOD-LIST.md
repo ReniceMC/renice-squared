@@ -31,6 +31,7 @@
   <tr><td><a href="https://modrinth.com/mod/qQyHxfxd">No Chat Reports</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/Aizistral">Aizistral</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
   <tr><td><a href="https://modrinth.com/mod/Bh37bMuy">Reese's Sodium Options</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/FlashyReese">FlashyReese</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
   <tr><td><a href="https://modrinth.com/mod/ZP7xHXtw">Remove Reloading Screen</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/dima_dencep">dima_dencep</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
+  <tr><td><a href="https://modrinth.com/mod/renice-shot">Renice Shot</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/Wechirok">Wechirok</a><br>&nbsp;</td><td align="center">❌<br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
   <tr><td><a href="https://modrinth.com/mod/x02cBj9Y">Status Effect Bars</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/A5b84">A5b84</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
   <tr><td><a href="https://modrinth.com/mod/w7ThoJFB">Zoomify</a><br>&nbsp;</td><td><a href="https://modrinth.com/user/isxander">isXander</a><br>&nbsp;</td><td align="center">✅<br>&nbsp;</td><td align="center">✅<br>&nbsp;</td></tr>
 </table>

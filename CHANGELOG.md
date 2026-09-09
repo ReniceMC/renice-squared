@@ -4,6 +4,41 @@
 
 ## 26.2
 
+### 2.1.0-beta
+
+2026-09-09
+
+## Alpha -> Beta
+
+* Fabric Loader has been updated to 0.19.5.
+
+### Added
+
+MODS
+
+* Renice Shot
+
+### Updated
+
+MODS
+
+* Better Statistics Screen
+* Crash Assistant
+* e4mc
+* Entity Model Features
+* Entity Texture Features
+* Fabric API
+* Fabric Language Kotlin
+* ImmediatelyFast
+* InventoryHUD+
+* Ixeris
+* LambDynamicLights
+* Lithium
+* More Culling
+* No Chat Reports
+* Remove Reloading Screen
+* TCDCommons API
+
 ### 2.0.0-alpha
 
 2026-07-27
