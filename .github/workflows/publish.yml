@@ -1,0 +1,202 @@
+name: Publish
+
+run-name: >-
+  ${{ github.event_name == 'workflow_dispatch'
+      && format('publish {0} {1} for {2}', inputs.version, inputs.stage, inputs.minecraft_version)
+      || format('check {0}', github.head_ref) }}
+
+on:
+  pull_request:
+    paths:
+      - .github/scripts/**
+      - .github/workflows/publish.yml
+      - CurseForge/**
+      - Packwiz/**
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version without the stage suffix such as 2.1.0
+        required: true
+        type: string
+      stage:
+        description: Release stage
+        required: true
+        default: beta
+        type: choice
+        options:
+          - alpha
+          - beta
+          - release
+      minecraft_version:
+        description: Minecraft version and Packwiz directory such as 26.2
+        required: true
+        default: "26.2"
+        type: string
+      changelog:
+        description: Optional custom Markdown or leave empty to use CHANGELOG.md
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-${{ github.repository }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PACK_NAME: Renice Squared
+  DISPLAY_NAME: Renice²
+  ARTIFACT_PREFIX: renice-squared
+  MODRINTH_PROJECT_ID: Qz0zmdeC
+  CURSEFORGE_PROJECT_ID: "1536330"
+  PACKWIZ_REVISION: ef87d964f8cbd52b3b13ea42453ef322290e2b9e
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Validate publication access
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+        run: |
+          if [[ "$GITHUB_REF_NAME" != "$DEFAULT_BRANCH" ]]; then
+            echo "Run this workflow from $DEFAULT_BRANCH" >&2
+            exit 1
+          fi
+          if [[ -z "$MODRINTH_TOKEN" || -z "$CURSEFORGE_TOKEN" ]]; then
+            echo "MODRINTH_TOKEN and CURSEFORGE_TOKEN must be configured" >&2
+            exit 1
+          fi
+
+      - name: Set up Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: 1.25.x
+          cache: false
+
+      - name: Install Packwiz
+        run: |
+          mkdir -p "$RUNNER_TEMP/bin"
+          GOBIN="$RUNNER_TEMP/bin" go install "github.com/packwiz/packwiz@$PACKWIZ_REVISION"
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+
+      - name: Prepare release
+        id: release
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          CUSTOM_CHANGELOG: ${{ inputs.changelog }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_STAGE: ${{ inputs.stage }}
+          INPUT_MC_VERSION: ${{ inputs.minecraft_version }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            VERSION="$INPUT_VERSION"
+            STAGE="$INPUT_STAGE"
+            MC_VERSION="$INPUT_MC_VERSION"
+          else
+            MC_VERSION=$(find CurseForge -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V | tail -n 1)
+            VERSION_ID=$(python3 -c \
+              'import sys,tomllib; print(tomllib.load(open(sys.argv[1], "rb"))["version"])' \
+              "Packwiz/$MC_VERSION/pack.toml")
+            if [[ "$VERSION_ID" =~ ^([0-9]+\.[0-9]+\.[0-9]+)-(alpha|beta)$ ]]; then
+              VERSION="${BASH_REMATCH[1]}"
+              STAGE="${BASH_REMATCH[2]}"
+            else
+              VERSION="$VERSION_ID"
+              STAGE="release"
+            fi
+          fi
+          {
+            echo "VERSION=$VERSION"
+            echo "STAGE=$STAGE"
+            echo "MC_VERSION=$MC_VERSION"
+          } >> "$GITHUB_ENV"
+          python3 .github/scripts/prepare_release.py \
+            --pack-dir "Packwiz/$MC_VERSION" \
+            --cf-metadata-dir "CurseForge/$MC_VERSION/mods" \
+            --changelog-file CHANGELOG.md \
+            --release-notes "$RUNNER_TEMP/release-notes.md" \
+            --version "$VERSION" \
+            --stage "$STAGE" \
+            --minecraft-version "$MC_VERSION" \
+            --pack-name "$PACK_NAME" \
+            --display-name "$DISPLAY_NAME" \
+            --artifact-prefix "$ARTIFACT_PREFIX"
+
+      - name: Build release archives
+        env:
+          ARTIFACT_NAME: ${{ steps.release.outputs.artifact_name }}
+        run: |
+          mkdir -p dist
+          packwiz refresh --pack-file "Packwiz/$MC_VERSION/pack.toml"
+          git diff --exit-code -- "Packwiz/$MC_VERSION"
+          packwiz modrinth export \
+            --pack-file "Packwiz/$MC_VERSION/pack.toml" \
+            -o "$GITHUB_WORKSPACE/dist/$ARTIFACT_NAME.mrpack"
+
+          cp -a "Packwiz/$MC_VERSION" "$RUNNER_TEMP/curseforge-pack"
+          rm -rf "$RUNNER_TEMP/curseforge-pack/mods"
+          cp -a "CurseForge/$MC_VERSION/mods" "$RUNNER_TEMP/curseforge-pack/mods"
+          packwiz refresh --pack-file "$RUNNER_TEMP/curseforge-pack/pack.toml"
+          packwiz curseforge export \
+            --pack-file "$RUNNER_TEMP/curseforge-pack/pack.toml" \
+            -o "$GITHUB_WORKSPACE/dist/$ARTIFACT_NAME.zip"
+
+      - name: Verify release archives
+        env:
+          VERSION_ID: ${{ steps.release.outputs.version_id }}
+          ARTIFACT_NAME: ${{ steps.release.outputs.artifact_name }}
+        run: |
+          FABRIC_LOADER=$(python3 -c \
+            'import sys,tomllib; print(tomllib.load(open(sys.argv[1], "rb"))["versions"]["fabric"])' \
+            "Packwiz/$MC_VERSION/pack.toml")
+          python3 .github/scripts/verify_release.py \
+            --mrpack "dist/$ARTIFACT_NAME.mrpack" \
+            --curseforge-zip "dist/$ARTIFACT_NAME.zip" \
+            --cf-metadata-dir "CurseForge/$MC_VERSION/mods" \
+            --version "$VERSION_ID" \
+            --minecraft-version "$MC_VERSION" \
+            --fabric-loader "$FABRIC_LOADER"
+
+      - name: Publish release
+        if: github.event_name == 'workflow_dispatch'
+        uses: Kira-NT/mc-publish@52307b03863581dec6b652b83e597aec02ebb075 # v3.3.1
+        with:
+          modrinth-id: ${{ env.MODRINTH_PROJECT_ID }}
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-files: dist/${{ steps.release.outputs.artifact_name }}.mrpack
+          modrinth-name: ${{ steps.release.outputs.display_name }}
+          modrinth-unfeature-mode: none
+
+          curseforge-id: ${{ env.CURSEFORGE_PROJECT_ID }}
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          curseforge-files: dist/${{ steps.release.outputs.artifact_name }}.zip
+          curseforge-name: ${{ steps.release.outputs.display_name }}
+
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-files: dist/${{ steps.release.outputs.artifact_name }}.mrpack
+          github-tag: v${{ steps.release.outputs.version_id }}
+          github-name: ${{ steps.release.outputs.github_name }}
+          github-generate-changelog: false
+          github-draft: false
+          github-prerelease: false
+          github-commitish: ${{ github.sha }}
+
+          version: ${{ steps.release.outputs.version_id }}
+          version-type: ${{ env.STAGE }}
+          changelog-file: ${{ runner.temp }}/release-notes.md
+          loaders: fabric
+          game-versions: ${{ env.MC_VERSION }}
+          game-version-filter: none
+          environment: client
