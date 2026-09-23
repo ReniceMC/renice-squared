@@ -4,6 +4,34 @@
 
 ## 26.2
 
+### 2.1.1
+
+2026-09-23
+
+## Beta -> Release
+
+### Updated
+
+MODS
+
+* 3D Skin Layers
+* Collective
+* Crash Assistant
+* Entity Culling
+* Entity Model Features
+* Entity Texture Features
+* Fabric API
+* Fzzy Config
+* ImmediatelyFast
+* Iris Shaders
+* Ixeris
+* Mod Menu
+* Reese's Sodium Options
+* Sodium
+* Sodium Extra
+* YetAnotherConfigLib
+* Zoomify
+
 ### 2.1.0-beta
 
 2026-09-09
