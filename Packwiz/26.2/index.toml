@@ -6,7 +6,7 @@ hash = "6b5cd9dca4032bb87b5db83e8c6d4edcfaffdc8fa0b30653d77c7d3305c1eadf"
 
 [[files]]
 file = "config/modpack_defaults/config/NoChatReports/NCR-Client.json"
-hash = "f3819d788eff36d573ff891425895c4c7eefe45227ef3980b9ca1708a22047f2"
+hash = "8f336b1c5df66053465bdf9f8e6b5e2c0175ac0e185d18d897ee7e3f1ab420d2"
 
 [[files]]
 file = "config/modpack_defaults/config/NoChatReports/NCR-Common.json"
@@ -18,7 +18,7 @@ hash = "aa954dc3d038d44269246d6e97d35a155da200ab42f5b0d1257aaf4b106539d1"
 
 [[files]]
 file = "config/modpack_defaults/config/crash_assistant/config.toml"
-hash = "d739433d75617fd3988ca5038b85a8c01e737480e8306f1f6651b12b9a9aca02"
+hash = "82658ed01123ae12ff78945e6801bc76284d96da7a9aba022d27c849d6b73fbe"
 
 [[files]]
 file = "config/modpack_defaults/config/debugify.json"
@@ -34,15 +34,15 @@ hash = "3f5878535aacbfea79ae6da2f9142963f5662af3141692f0ba945767c9096ce5"
 
 [[files]]
 file = "config/modpack_defaults/config/isxander-main-menu-credits.json"
-hash = "ae66984670310fca8ed036038e95b58364204984d3bc2036556d4391caf6b169"
+hash = "ced570e1ce09f1f805537b9f4273b51b31948a0762299017fe777ec99fdb5555"
 
 [[files]]
 file = "config/modpack_defaults/config/moreculling.toml"
-hash = "0aa6fc5bdb5d4276425b4885c3878403fa47cc5ed84a62a12ca7b93d873b64d6"
+hash = "a0b2444db1aa65997fd715d0c2a7753f5be302d1304364993260fb7489c1eddb"
 
 [[files]]
 file = "config/modpack_defaults/options.txt"
-hash = "f4ced1cd3e0d84da6cdcb1fa4e4b67bd68a7c2a963dab5522f3bd14f7131fa1d"
+hash = "68637517a886cc919eb2aa24db5858aa955777a442e7d4d3d7cf4bd5d8ae87a5"
 
 [[files]]
 file = "mods/3dskinlayers.pw.toml"
@@ -91,7 +91,7 @@ metafile = true
 
 [[files]]
 file = "mods/collective.pw.toml"
-hash = "568b401e76de2dffd12f42b14e063d0ab82998493c9bb4c80952028e06ff354e"
+hash = "eb65eb75efe1fa8791bc1f77547b7bd2926ee472edc80e7f91b3a4f8fd236541"
 metafile = true
 
 [[files]]
@@ -116,7 +116,7 @@ metafile = true
 
 [[files]]
 file = "mods/debugify.pw.toml"
-hash = "88aa13d41089c63696b88a60353b21156b67416affbdb1f162478b4771b76ff2"
+hash = "7a4aabc6906981c5401fb54ab640f246eea94cd5214efeffe280e1f6130b1530"
 metafile = true
 
 [[files]]
@@ -126,12 +126,12 @@ metafile = true
 
 [[files]]
 file = "mods/e4mc.pw.toml"
-hash = "89e01e31bfb003be8675d0682011cb1735d20325e7974e98e35950336f5036f2"
+hash = "59f646cc54f1287f331e3156612908b5a45804762b09453522044e38f498ec3e"
 metafile = true
 
 [[files]]
 file = "mods/entity-model-features.pw.toml"
-hash = "1f86e76fc51b47591e1356c196c1f78c1c41dfa92b21610dda00febe0429c16d"
+hash = "e65bf5ed92166b9d048f75529416662378ce70349f3e41875084c5346bb7cd95"
 metafile = true
 
 [[files]]
@@ -141,7 +141,7 @@ metafile = true
 
 [[files]]
 file = "mods/entitytexturefeatures.pw.toml"
-hash = "944f951fd554a018cbf5b2cb81cb58355ff68be88e58cf8fb476736fff3a5476"
+hash = "48838a30508e057894b24bdbbab78b435a6b27f504b7ef9c0f5d178d1e29d403"
 metafile = true
 
 [[files]]
@@ -166,12 +166,7 @@ metafile = true
 
 [[files]]
 file = "mods/full-brightness-toggle.pw.toml"
-hash = "20f0d787d8b8fb92edb58bd87a432760e933ce9d220593927bff97490afe71c5"
-metafile = true
-
-[[files]]
-file = "mods/fzzy-config.pw.toml"
-hash = "d6d8aa0f220ddf366133ce02184e30c1d8204f7741da97040344ab53bb4b98ce"
+hash = "91420b51822a22c74ec78ecbcd16c1d2b0038f807caf091ce524abb7117ebbd7"
 metafile = true
 
 [[files]]
@@ -201,7 +196,7 @@ metafile = true
 
 [[files]]
 file = "mods/language-reload.pw.toml"
-hash = "807a319ce0e802960796fc6a609e7d96a8566f161ddc60424ebc1d4fae2da80a"
+hash = "ddf84ce34c3a7449a9c4d7a6d7c07068469cabb3ce9c47cff54ece8e98e83d93"
 metafile = true
 
 [[files]]
@@ -215,18 +210,18 @@ hash = "f4c469b5105f57152ff1cc6b3fdcfada1b9ab1052ba9ad84fea919f96ab53a05"
 metafile = true
 
 [[files]]
-file = "mods/mixintrace.pw.toml"
-hash = "6cd55df8041a48cb7f5f95ea4520f5ed59064e71ff9dab8b0e02bb922b68c9cb"
+file = "mods/mixintrace-reborn.pw.toml"
+hash = "a13fa8f7221af527247ba4d9e1a13b85b98d65f210fbe1f7be5441980e02ae19"
 metafile = true
 
 [[files]]
 file = "mods/modernfix-mvus.pw.toml"
-hash = "ba528e27fc27b75a1997936bba35cf7d14c4d4d203aab5c067d5ec3ffcd0cfb6"
+hash = "0ea4ca54ca588caf91a5223b5056e12359a532ec27fd4a22f4962e7d1ee6ce21"
 metafile = true
 
 [[files]]
 file = "mods/modmenu.pw.toml"
-hash = "fa00f7dbf48bbcf6940248d3fd3629f43656c54006cc63d5560f9ca77ccd97a9"
+hash = "dc9906e45919f5b3a31e3d5582cd97bdd7534f56c2a5e730b9de41875a97e1eb"
 metafile = true
 
 [[files]]
@@ -255,11 +250,6 @@ hash = "5c54f485a3d166cfa6a931c016f7e31150a34c128271b985ce3c3ceed62d1330"
 metafile = true
 
 [[files]]
-file = "mods/placeholder-api.pw.toml"
-hash = "b234ade7fd54bb9d99c27769cd1635b18835752676d0cdd0a29af2b4146251a8"
-metafile = true
-
-[[files]]
 file = "mods/puzzle.pw.toml"
 hash = "92b8b681374fa78077bbe9612ef5d44569f31985d78ebe8b664f6a985bf9cfee"
 metafile = true
@@ -271,7 +261,7 @@ metafile = true
 
 [[files]]
 file = "mods/renice-shot.pw.toml"
-hash = "591e54e56ba9e5ad390e5953bcba9c3a05d1c4456ed544d93c513bacddb2b8d9"
+hash = "4aa070e11be9857476b2dcd132265d5b42e118a1c1cb07e8761f018165d8b58f"
 metafile = true
 
 [[files]]
@@ -306,5 +296,5 @@ metafile = true
 
 [[files]]
 file = "mods/zoomify.pw.toml"
-hash = "8b25c567202e98099048389091e660f6cfe5fdaa68f932b3a87a7f3789235a49"
+hash = "ac83294a5d1dbc0a9b1c54c5ae045c43e6ad9369cc33600abdb7f28b5d684fd5"
 metafile = true

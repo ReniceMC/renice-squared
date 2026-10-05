@@ -1,0 +1,13 @@
+name = "Better Statistics Screen"
+filename = "betterstats-5.5.6+fn-26.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "0fdbcc0a80ff1ef3291f12b8e0c5d1b315064359"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8623300
+project-id = 667464

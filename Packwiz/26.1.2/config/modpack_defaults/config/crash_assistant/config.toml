@@ -10,10 +10,8 @@
 	#   - DISCORD: Uses terminology like 'join the Discord' and 'post in #channel'.
 	#   - GITHUB: Uses terminology like 'visit the GitHub' and 'post into a new issue'.
 	formulation_type = "GITHUB"
-	#Anyways log will be uploaded to mclo.gs, but with this option you can wrap link to gnomebot.dev for better formatting.
-	#If help_link equals 'CHANGE_ME', this value will be ignored and gnomebot.dev used.
-	#Supported values: mclo.gs / gnomebot.dev
-	upload_to = "gnomebot.dev"
+	#Logs are uploaded to mclo.gs; this controls the link wrapper.
+	wrap_link = "gnomebot.dev"
 	#Show gui on minecraft crashed on modloading and FML error screen displayed.
 	show_on_fml_error_screen = true
 	#Close old CrashAssistantApp if it's still running when starting a new instance of Minecraft, to avoid confusing player with window from old crash.
@@ -31,9 +29,6 @@
 	#This option can prevent this and enable individual upload buttons immediately after crash.
 	#However can confuse users and make them clicking individual upload buttons instead of Upload All Button.
 	prevent_upload_buttons_delay = false
-	#Before uploading the first log, requires the user to accept the privacy policy.
-	#Disabling this option may be illegal in some countries if you are modpack creator. Disable at your own risk.
-	enable_privacy_policy_acceptance = true
 	#Unfortunately mclogs censoring ip-like versions as has no way to determine if it's version or IP.
 	#This will prevent this by replacing dot's in them to dot-like symbol.
 	#Anti censoring only versions, IP's are kept censored.

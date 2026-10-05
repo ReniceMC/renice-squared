@@ -4,6 +4,44 @@
 
 ## 26.2
 
+### 2.2.0
+
+2026-10-05
+
+* Iris shader pack selection has been rebound to `-`.
+* Default settings have been updated for current Minecraft and mod versions.
+
+### Added
+
+MODS
+
+* MixinTrace Reborn
+
+### Updated
+
+MODS
+
+* Collective
+* Debugify
+* e4mc
+* Entity Model Features
+* Entity Texture Features
+* Full Brightness Toggle
+* Language Reload
+* Mod Menu
+* ModernFix
+* Renice Shot
+* Zoomify
+
+### Removed
+
+MODS
+
+* Fzzy Config
+* MixinTrace
+* Text Placeholder API (standalone)
+
+
 ### 2.1.1
 
 2026-09-23
@@ -132,6 +170,57 @@ MODS
 # (1.x.x)
 
 ## 26.1.2
+
+### 1.2.0
+
+2026-10-05
+
+* Fabric Loader has been updated to 0.19.5.
+* Iris shader pack selection has been rebound to `-`.
+* Default settings have been updated for current Minecraft and mod versions.
+
+### Added
+
+MODS
+
+* MixinTrace Reborn
+
+### Updated
+
+MODS
+
+* 3D Skin Layers
+* Better Statistics Screen
+* Crash Assistant
+* Debugify
+* e4mc
+* Entity Culling
+* Entity Model Features
+* Entity Texture Features
+* Fabric API
+* Fabric Language Kotlin
+* Iris Shaders
+* Ixeris
+* LambDynamicLights
+* Language Reload
+* Lithium
+* Mod Menu
+* More Culling
+* Reese's Sodium Options
+* Sodium
+* Sodium Extra
+* TCDCommons API
+* YetAnotherConfigLib
+* Zoomify
+
+### Removed
+
+MODS
+
+* Fzzy Config
+* MixinTrace
+* Text Placeholder API (standalone)
+
 
 ### 1.1.2-release
 
