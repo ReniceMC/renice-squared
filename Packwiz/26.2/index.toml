@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "config/modpack_defaults/config/BBEConfig.json"
-hash = "6b5cd9dca4032bb87b5db83e8c6d4edcfaffdc8fa0b30653d77c7d3305c1eadf"
+hash = "5ddb74be59ebf3e145cdf3740c87c24c0e626c52893865e431a3eef9d10140e2"
 
 [[files]]
 file = "config/modpack_defaults/config/NoChatReports/NCR-Client.json"
@@ -14,7 +14,7 @@ hash = "4647a02b4f7c1c0cadce7b7ebeee8fce629a5d4d5c823577ddb9f96a5c6e6ac3"
 
 [[files]]
 file = "config/modpack_defaults/config/PaginatedAdvancements.json5"
-hash = "aa954dc3d038d44269246d6e97d35a155da200ab42f5b0d1257aaf4b106539d1"
+hash = "80995c3b6dcf4f5ff8a2021072bfeb4ebc04a77a8938830f369f780c4aab4fa5"
 
 [[files]]
 file = "config/modpack_defaults/config/crash_assistant/config.toml"
@@ -30,7 +30,7 @@ hash = "830e355e78e45bc5bb080a688967bee038bb650d800aa3c5b97c16e51edc62aa"
 
 [[files]]
 file = "config/modpack_defaults/config/iris.properties"
-hash = "3f5878535aacbfea79ae6da2f9142963f5662af3141692f0ba945767c9096ce5"
+hash = "08b789827f7cbfaf5bffd5aedb6dfe9889e216e87be4674299781934658767af"
 
 [[files]]
 file = "config/modpack_defaults/config/isxander-main-menu-credits.json"
