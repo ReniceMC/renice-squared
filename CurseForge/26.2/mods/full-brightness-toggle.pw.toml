@@ -1,13 +1,13 @@
 name = "Full Brightness Toggle"
-filename = "fullbrightnesstoggle-26.2.0-4.5.jar"
+filename = "fullbrightnesstoggle-26.2.0-4.7.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "3dcb100ed904ef61efb64a9dff365462dd278259"
+hash = "fbff37fbf6e2f4c7df9ebe98913f73c5c051f0a2"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 8273887
+file-id = 9034161
 project-id = 391656

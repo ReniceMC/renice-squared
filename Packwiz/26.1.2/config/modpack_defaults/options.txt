@@ -1,4 +1,4 @@
-version:4435
+version:4790
 graphicsPreset:"custom"
 renderDistance:10
 simulationDistance:10
@@ -22,7 +22,6 @@ key_key.quickActions:key.keyboard.f7
 key_key.saveToolbarActivator:key.keyboard.unknown
 key_key.dynamic_fps.toggle_forced:key.keyboard.unknown
 key_key.dynamic_fps.toggle_disabled:key.keyboard.unknown
-key_betterstats.key_binding.toggle_hud_screen:key.keyboard.unknown
 key_key.debug.spectate:key.keyboard.right.alt
 key_key.debug.showChunkBorders:key.keyboard.insert
 key_key.entityculling.toggle:key.keyboard.unknown
@@ -37,7 +36,7 @@ key_key.modmenu.open_menu:key.keyboard.unknown
 key_zoomify.key.zoom.secondary:key.keyboard.f6
 key_iris.keybind.reload:key.keyboard.r
 key_iris.keybind.toggleShaders:key.keyboard.k
-key_iris.keybind.shaderPackSelection:key.keyboard.page.down
+key_iris.keybind.shaderPackSelection:key.keyboard.minus
 key_iris.keybind.wireframe:key.keyboard.unknown
 resourcePacks:["vanilla","continuity:default","continuity:glass_pane_culling_fix"]
 incompatibleResourcePacks:[]
