@@ -217,7 +217,7 @@ jobs:
           github-name: ${{ steps.release.outputs.github_name }}
           github-generate-changelog: false
           github-draft: false
-          github-prerelease: ${{ env.STAGE != 'release' }}
+          github-prerelease: false
           github-commitish: ${{ github.sha }}
 
           version: ${{ steps.release.outputs.version_id }}
