@@ -1,0 +1,13 @@
+name = "Renice Shot"
+filename = "renice-shot-1.2.1+mc26.3.jar"
+side = "client"
+
+[download]
+hash-format = "sha1"
+hash = "224e9c47d9234549a589b46b9680be53b3697a65"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9022938
+project-id = 1655703
