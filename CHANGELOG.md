@@ -1,5 +1,67 @@
 # Renice² changelog
 
+# (3.x.x)
+
+## 26.3
+
+### 3.0.0-beta
+
+2026-10-09
+
+* Minecraft has been updated to 26.3.
+* options.txt has been migrated to Minecraft 26.3's format.
+
+### Updated
+
+MODS
+
+* 3D Skin Layers
+* Animatica Refabricated
+* AppleSkin
+* BadOptimizations
+* Better Block Entities
+* Better Statistics Screen
+* Cloth Config API
+* Clumps
+* Collective
+* Continuity
+* Debugify
+* Dynamic FPS
+* Entity Culling
+* Entity Model Features
+* Entity Texture Features
+* Fabric API
+* Forge Config API Port
+* Full Brightness Toggle
+* ImmediatelyFast
+* InventoryHUD+
+* Iris Shaders
+* Ixeris
+* LambDynamicLights
+* Language Reload
+* Lithium
+* Mod Menu
+* ModernFix
+* More Culling
+* No Chat Reports
+* OptiGUI
+* Puzzle
+* Reese's Sodium Options
+* Renice Shot
+* Remove Reloading Screen
+* Sodium
+* Sodium Extra
+* TCDCommons API
+* YetAnotherConfigLib
+* Zoomify
+
+### Removed
+
+MODS
+
+* Cubes Without Borders
+* Paginated Advancements & Custom Frames
+
 # (2.x.x)
 
 ## 26.2

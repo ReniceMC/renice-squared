@@ -36,6 +36,11 @@ on:
         description: Optional custom Markdown or leave empty to use CHANGELOG.md
         required: false
         type: string
+      publish_curseforge:
+        description: Build and publish the CurseForge edition
+        required: true
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -69,15 +74,23 @@ jobs:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          PUBLISH_CURSEFORGE: ${{ inputs.publish_curseforge }}
         run: |
           if [[ "$GITHUB_REF_NAME" != "$DEFAULT_BRANCH" ]]; then
             echo "Run this workflow from $DEFAULT_BRANCH" >&2
             exit 1
           fi
-          if [[ -z "$MODRINTH_TOKEN" || -z "$CURSEFORGE_TOKEN" ]]; then
-            echo "MODRINTH_TOKEN and CURSEFORGE_TOKEN must be configured" >&2
+          if [[ -z "$MODRINTH_TOKEN" ]]; then
+            echo "MODRINTH_TOKEN must be configured" >&2
             exit 1
           fi
+          if [[ "$PUBLISH_CURSEFORGE" == "true" && -z "$CURSEFORGE_TOKEN" ]]; then
+            echo "CURSEFORGE_TOKEN must be configured" >&2
+            exit 1
+          fi
+
+      - name: Test release scripts
+        run: python3 -m unittest discover -s .github/scripts -p "test_*.py"
 
       - name: Set up Go
         uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
@@ -99,13 +112,19 @@ jobs:
           INPUT_VERSION: ${{ inputs.version }}
           INPUT_STAGE: ${{ inputs.stage }}
           INPUT_MC_VERSION: ${{ inputs.minecraft_version }}
+          INPUT_CURSEFORGE: ${{ inputs.publish_curseforge }}
         run: |
           if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
             VERSION="$INPUT_VERSION"
             STAGE="$INPUT_STAGE"
             MC_VERSION="$INPUT_MC_VERSION"
+            BUILD_CURSEFORGE="$INPUT_CURSEFORGE"
           else
-            MC_VERSION=$(find CurseForge -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V | tail -n 1)
+            MC_VERSION=$(find Packwiz -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V | tail -n 1)
+            BUILD_CURSEFORGE=false
+            if [[ -d "CurseForge/$MC_VERSION/mods" ]]; then
+              BUILD_CURSEFORGE=true
+            fi
             VERSION_ID=$(python3 -c \
               'import sys,tomllib; print(tomllib.load(open(sys.argv[1], "rb"))["version"])' \
               "Packwiz/$MC_VERSION/pack.toml")
@@ -121,10 +140,15 @@ jobs:
             echo "VERSION=$VERSION"
             echo "STAGE=$STAGE"
             echo "MC_VERSION=$MC_VERSION"
+            echo "BUILD_CURSEFORGE=$BUILD_CURSEFORGE"
           } >> "$GITHUB_ENV"
+          CF_ARGS=(--skip-curseforge)
+          if [[ "$BUILD_CURSEFORGE" == "true" ]]; then
+            CF_ARGS=(--cf-metadata-dir "CurseForge/$MC_VERSION/mods")
+          fi
           python3 .github/scripts/prepare_release.py \
             --pack-dir "Packwiz/$MC_VERSION" \
-            --cf-metadata-dir "CurseForge/$MC_VERSION/mods" \
+            "${CF_ARGS[@]}" \
             --changelog-file CHANGELOG.md \
             --release-notes "$RUNNER_TEMP/release-notes.md" \
             --version "$VERSION" \
@@ -134,7 +158,7 @@ jobs:
             --display-name "$DISPLAY_NAME" \
             --artifact-prefix "$ARTIFACT_PREFIX"
 
-      - name: Build release archives
+      - name: Build Modrinth archive
         env:
           ARTIFACT_NAME: ${{ steps.release.outputs.artifact_name }}
         run: |
@@ -145,6 +169,11 @@ jobs:
             --pack-file "Packwiz/$MC_VERSION/pack.toml" \
             -o "$GITHUB_WORKSPACE/dist/$ARTIFACT_NAME.mrpack"
 
+      - name: Build CurseForge archive
+        if: env.BUILD_CURSEFORGE == 'true'
+        env:
+          ARTIFACT_NAME: ${{ steps.release.outputs.artifact_name }}
+        run: |
           cp -a "Packwiz/$MC_VERSION" "$RUNNER_TEMP/curseforge-pack"
           rm -rf "$RUNNER_TEMP/curseforge-pack/mods"
           cp -a "CurseForge/$MC_VERSION/mods" "$RUNNER_TEMP/curseforge-pack/mods"
@@ -161,15 +190,18 @@ jobs:
           FABRIC_LOADER=$(python3 -c \
             'import sys,tomllib; print(tomllib.load(open(sys.argv[1], "rb"))["versions"]["fabric"])' \
             "Packwiz/$MC_VERSION/pack.toml")
+          CF_ARGS=()
+          if [[ "$BUILD_CURSEFORGE" == "true" ]]; then
+            CF_ARGS=(--curseforge-zip "dist/$ARTIFACT_NAME.zip" --cf-metadata-dir "CurseForge/$MC_VERSION/mods")
+          fi
           python3 .github/scripts/verify_release.py \
             --mrpack "dist/$ARTIFACT_NAME.mrpack" \
-            --curseforge-zip "dist/$ARTIFACT_NAME.zip" \
-            --cf-metadata-dir "CurseForge/$MC_VERSION/mods" \
+            "${CF_ARGS[@]}" \
             --version "$VERSION_ID" \
             --minecraft-version "$MC_VERSION" \
             --fabric-loader "$FABRIC_LOADER"
 
-      - name: Publish release
+      - name: Publish GitHub and Modrinth release
         if: github.event_name == 'workflow_dispatch'
         uses: Kira-NT/mc-publish@52307b03863581dec6b652b83e597aec02ebb075 # v3.3.1
         with:
@@ -179,20 +211,31 @@ jobs:
           modrinth-name: ${{ steps.release.outputs.display_name }}
           modrinth-unfeature-mode: none
 
-          curseforge-id: ${{ env.CURSEFORGE_PROJECT_ID }}
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          curseforge-files: dist/${{ steps.release.outputs.artifact_name }}.zip
-          curseforge-name: ${{ steps.release.outputs.display_name }}
-
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-files: dist/${{ steps.release.outputs.artifact_name }}.mrpack
+          github-files: dist/${{ steps.release.outputs.artifact_name }}.*
           github-tag: v${{ steps.release.outputs.version_id }}
           github-name: ${{ steps.release.outputs.github_name }}
           github-generate-changelog: false
           github-draft: false
-          github-prerelease: false
+          github-prerelease: ${{ env.STAGE != 'release' }}
           github-commitish: ${{ github.sha }}
 
+          version: ${{ steps.release.outputs.version_id }}
+          version-type: ${{ env.STAGE }}
+          changelog-file: ${{ runner.temp }}/release-notes.md
+          loaders: fabric
+          game-versions: ${{ env.MC_VERSION }}
+          game-version-filter: none
+          environment: client
+
+      - name: Publish CurseForge release
+        if: github.event_name == 'workflow_dispatch' && env.BUILD_CURSEFORGE == 'true'
+        uses: Kira-NT/mc-publish@52307b03863581dec6b652b83e597aec02ebb075 # v3.3.1
+        with:
+          curseforge-id: ${{ env.CURSEFORGE_PROJECT_ID }}
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          curseforge-files: dist/${{ steps.release.outputs.artifact_name }}.zip
+          curseforge-name: ${{ steps.release.outputs.display_name }}
           version: ${{ steps.release.outputs.version_id }}
           version-type: ${{ env.STAGE }}
           changelog-file: ${{ runner.temp }}/release-notes.md

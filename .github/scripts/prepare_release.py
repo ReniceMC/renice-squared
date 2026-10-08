@@ -11,7 +11,8 @@ from pathlib import Path
 VERSION_RE = re.compile(r"^\d+\.\d+\.\d+$")
 MINECRAFT_RE = re.compile(r"^[0-9A-Za-z][0-9A-Za-z._+-]*$")
 RELEASE_HEADING_RE = re.compile(
-    r"^###\s+\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?\s*$", re.MULTILINE
+    r"^(?:###\s+\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?"
+    r"|#\s+\(\d+\.x\.x\)|##\s+\d[0-9A-Za-z._+-]*)\s*$", re.MULTILINE
 )
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -62,7 +63,8 @@ def main() -> None:
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--pack-dir", type=Path, required=True)
-    parser.add_argument("--cf-metadata-dir", type=Path, required=True)
+    parser.add_argument("--cf-metadata-dir", type=Path)
+    parser.add_argument("--skip-curseforge", action="store_true")
     parser.add_argument("--changelog-file", type=Path, required=True)
     parser.add_argument("--release-notes", type=Path, required=True)
     parser.add_argument("--version", required=True)
@@ -82,8 +84,6 @@ def main() -> None:
     pack_toml = args.pack_dir / "pack.toml"
     if not pack_toml.is_file():
         fail(f"missing {pack_toml}")
-    if not args.cf_metadata_dir.is_dir():
-        fail(f"missing {args.cf_metadata_dir}")
 
     with pack_toml.open("rb") as source:
         pack = tomllib.load(source)
@@ -99,20 +99,10 @@ def main() -> None:
         )
 
     source_mods = sorted((args.pack_dir / "mods").glob("*.pw.toml"))
-    cf_mods = sorted(args.cf_metadata_dir.glob("*.pw.toml"))
-    if not source_mods or len(source_mods) != len(cf_mods):
-        fail(
-            "Modrinth and CurseForge metadata counts differ: "
-            f"{len(source_mods)} != {len(cf_mods)}"
-        )
-
-    for metadata_path in cf_mods:
-        with metadata_path.open("rb") as source:
-            metadata = tomllib.load(source)
-        if "curseforge" not in metadata.get("update", {}):
-            fail(f"missing CurseForge update metadata in {metadata_path}")
-        if metadata.get("download", {}).get("mode") != "metadata:curseforge":
-            fail(f"unexpected download mode in {metadata_path}")
+    if not source_mods:
+        fail("modpack has no mod metadata")
+    if not args.skip_curseforge:
+        validate_curseforge_metadata(args.cf_metadata_dir, source_mods)
 
     custom_changelog = os.environ.get("CUSTOM_CHANGELOG", "").strip()
     if custom_changelog:
@@ -126,6 +116,25 @@ def main() -> None:
     write_output("display_name", f"{args.display_name} {args.version}{stage_name}")
     write_output("github_name", f"{args.version}{stage_name}")
     write_output("artifact_name", f"{args.artifact_prefix}-{version_id}")
+
+
+def validate_curseforge_metadata(directory: Path | None, source_mods: list[Path]) -> None:
+    if directory is None or not directory.is_dir():
+        fail(f"missing CurseForge metadata directory: {directory}")
+    cf_mods = sorted(directory.glob("*.pw.toml"))
+    if not source_mods or len(source_mods) != len(cf_mods):
+        fail(
+            "Modrinth and CurseForge metadata counts differ: "
+            f"{len(source_mods)} != {len(cf_mods)}"
+        )
+
+    for metadata_path in cf_mods:
+        with metadata_path.open("rb") as source:
+            metadata = tomllib.load(source)
+        if "curseforge" not in metadata.get("update", {}):
+            fail(f"missing CurseForge update metadata in {metadata_path}")
+        if metadata.get("download", {}).get("mode") != "metadata:curseforge":
+            fail(f"unexpected download mode in {metadata_path}")
 
 
 if __name__ == "__main__":
