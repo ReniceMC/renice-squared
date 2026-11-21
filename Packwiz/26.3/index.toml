@@ -9,14 +9,6 @@ file = "config/modpack_defaults/config/BBEConfig.json"
 hash = "5ddb74be59ebf3e145cdf3740c87c24c0e626c52893865e431a3eef9d10140e2"
 
 [[files]]
-file = "config/modpack_defaults/config/NoChatReports/NCR-Client.json"
-hash = "8f336b1c5df66053465bdf9f8e6b5e2c0175ac0e185d18d897ee7e3f1ab420d2"
-
-[[files]]
-file = "config/modpack_defaults/config/NoChatReports/NCR-Common.json"
-hash = "4647a02b4f7c1c0cadce7b7ebeee8fce629a5d4d5c823577ddb9f96a5c6e6ac3"
-
-[[files]]
 file = "config/modpack_defaults/config/PaginatedAdvancements.json5"
 hash = "80995c3b6dcf4f5ff8a2021072bfeb4ebc04a77a8938830f369f780c4aab4fa5"
 
@@ -34,7 +26,7 @@ hash = "08b789827f7cbfaf5bffd5aedb6dfe9889e216e87be4674299781934658767af"
 
 [[files]]
 file = "config/modpack_defaults/config/isxander-main-menu-credits.json"
-hash = "c88e35dd957a39d23e73183a221b41b78a7043128c7b15c079fe1983b73eac31"
+hash = "dc91715033f648d0925c04db5b12820cb5f159a9134e0ff1cc862ac718579099"
 
 [[files]]
 file = "config/modpack_defaults/config/moreculling.toml"
@@ -232,11 +224,6 @@ metafile = true
 [[files]]
 file = "mods/moreculling.pw.toml"
 hash = "a0fefd25252e1dfac7da103d64436b9d7579b5cf404fd664139c4db079f40897"
-metafile = true
-
-[[files]]
-file = "mods/no-chat-reports.pw.toml"
-hash = "54019b98e621d0ab792d7a2de0f8f2714660e367790b17ffa0ac902344166396"
 metafile = true
 
 [[files]]
