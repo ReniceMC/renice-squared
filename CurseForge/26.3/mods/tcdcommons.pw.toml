@@ -1,13 +1,13 @@
 name = "TCDCommons API"
-filename = "tcdcommons-5.6.0-beta.2+fn-26.3.jar"
+filename = "tcdcommons-5.9.0+fn-26.3.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "73973705825ac487a84843656d37bcaf4709890a"
+hash = "042d177619e923f1fa8b0f2fa5c187860891cf9d"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 8994333
+file-id = 9715644
 project-id = 711539

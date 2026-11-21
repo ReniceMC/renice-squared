@@ -1,13 +1,13 @@
 name = "Config Manager"
-filename = "ConfigManager-fabric-26.1_26.2-1.1.3.jar"
+filename = "ConfigManager-fabric-26.3-1.1.4.jar"
 side = "client"
 
 [download]
 hash-format = "sha1"
-hash = "ce2d31f3cb6815fe83c742326430af8dd9f6a479"
+hash = "13fe50ecc8aba1e684e5d30c0287bfb868d135c0"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 8260926
+file-id = 9675217
 project-id = 1340480
